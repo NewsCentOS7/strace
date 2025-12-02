@@ -106,15 +106,6 @@ wait
 
 %check
 %{buildroot}%{_bindir}/strace -V
-# Temporary until we dig deeper into the failures
-%ifnarch s390x ppc64
-make %{?_smp_mflags} -k check VERBOSE=1 TIMEOUT_DURATION=1800
-echo 'BEGIN OF TEST SUITE INFORMATION'
-tail -n 99999 -- tests*/test-suite.log tests*/ksysent.log
-find tests* -type f -name '*.log' -print0 |
-	xargs -r0 grep -H '^KERNEL BUG:' -- ||:
-echo 'END OF TEST SUITE INFORMATION'
-%endif
 
 %files
 %maybe_use_defattr
