@@ -48,11 +48,11 @@ received by a process.
 %prep
 %setup -q -n strace-%{version}
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 chmod a+x tests/*.test
 
